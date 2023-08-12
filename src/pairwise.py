@@ -67,7 +67,10 @@ class Distances:
         plt.yticks(range(len(self.covariance.columns)), self.covariance.columns);
         
         # add the colorbar legend
-        fig.colorbar(cax, ticks=[-1, 0, 1], aspect=40, shrink=.8)
+        lower = self.covariance.min().min()
+        upper = self.covariance.max().max()
+        middle = (upper + lower) / 2
+        fig.colorbar(cax, ticks=[lower, middle, upper], aspect=40, shrink=.8)
 
         title = "Covariance Plot"
         fig.suptitle(title, y=1.08)
@@ -96,7 +99,10 @@ class Distances:
         plt.yticks(range(len(self.euclidean.columns)), self.euclidean.columns);
         
         # add the colorbar legend
-        fig.colorbar(cax, ticks=[-1, 0, 1], aspect=40, shrink=.8)
+        lower = self.euclidean.min().min()
+        upper = self.euclidean.max().max()
+        middle = (upper + lower) / 2
+        fig.colorbar(cax, ticks=[lower, middle, upper], aspect=40, shrink=.8)
 
         title = "Euclidean Distance Plot"
         fig.suptitle(title, y=1.08)
@@ -125,7 +131,7 @@ class Distances:
         plt.yticks(range(len(self.cosine.columns)), self.cosine.columns);
         
         # add the colorbar legend
-        fig.colorbar(cax, ticks=[-1, 0, 1], aspect=40, shrink=.8)
+        fig.colorbar(cax, ticks=[0, 0.5, 1], aspect=40, shrink=.8)
 
         title = "Cosine Distance Plot"
         fig.suptitle(title, y=1.08)
